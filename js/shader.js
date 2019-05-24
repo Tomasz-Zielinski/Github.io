@@ -114,26 +114,37 @@ gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
 
 var camera, scene, renderer, composer, container, plane;
 var clock = new THREE.Clock();
+<<<<<<< HEAD
 var uniforms = {
   u_amplitude: { value: 300.0 },
   u_frequency: { value: 0.005 },
   u_time: { value: 0.0 }
 }
+=======
+var uniforms = { u_amplitude: { value: 300.0 }, u_frequency: { value: 0.005 }, u_time: { value: 0.0 } }
+>>>>>>> c0693d20da9b78f38433ebc19b1e60038d09906b
 
 init();
 animate();
 
 function init() {
+<<<<<<< HEAD
   container = document.createElement('div');
   document.body.querySelector('section').append(container);
+=======
+>>>>>>> c0693d20da9b78f38433ebc19b1e60038d09906b
 
   scene = new THREE.Scene();
 
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+<<<<<<< HEAD
 
   camera.position.set(0, 500, 0);
   camera.rotateZ(-Math.PI)
   camera.lookAt(new THREE.Vector3(0, 0, -100))
+=======
+  camera.position.set(0, 0, 100);
+>>>>>>> c0693d20da9b78f38433ebc19b1e60038d09906b
 
   plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(1000, 1000, 200, 200), new THREE.ShaderMaterial({
     uniforms: uniforms,
@@ -142,6 +153,7 @@ function init() {
     side: THREE.DoubleSide,
     wireframe: true
   }));
+<<<<<<< HEAD
   plane.rotation.x = 360;
   scene.add(plane);
 
@@ -153,6 +165,15 @@ function init() {
   renderer.gammaOutput = true;
 
   container.appendChild(renderer.domElement);
+=======
+  plane.position.z -= 500;
+  scene.add(plane);
+
+  renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('canvas') });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.gammaInput = renderer.gammaOutput = true;
+>>>>>>> c0693d20da9b78f38433ebc19b1e60038d09906b
 
   var effectVignette = new THREE.ShaderPass(THREE.VignetteShader);
   effectVignette.uniforms["offset"].value = 0.95;
@@ -178,6 +199,12 @@ function onWindowResize() {
 
 function animate() {
   requestAnimationFrame(animate);
+<<<<<<< HEAD
   plane.material.uniforms.u_time.value += clock.getDelta() / 2;
+=======
+
+  plane.material.uniforms.u_time.value += clock.getDelta() / 4;
+
+>>>>>>> c0693d20da9b78f38433ebc19b1e60038d09906b
   composer.render(clock.getDelta());
 }
